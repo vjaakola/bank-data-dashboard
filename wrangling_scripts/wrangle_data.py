@@ -1,163 +1,179 @@
 import pandas as pd
 import plotly.graph_objs as go
+from pandas_datareader import data, wb
+import datetime
+from datetime import datetime
 
-def cleandata(dataset, keepcolumns = ['Country Name', '1990', '2015'], value_variables = ['1990', '2015']):
-    """Clean world bank data for a visualizaiton dashboard
 
-    Keeps data range of dates in keep_columns variable and data for the top 10 economies
-    Reorients the columns into a year, country and value
-    Saves the results to a csv file
+"""Prepare Yahoo Finance bank data for a visualizaiton dashboard
 
     Args:
-        dataset (str): name of the csv data file
+        dataset: Pandas data reader to open the data files
 
     Returns:
         None
 
     """    
-    df = pd.read_csv(dataset, skiprows=4)
-
-    # Keep only the columns of interest (years and country name)
-    df = df[keepcolumns]
-
-    top10country = ['United States', 'China', 'Japan', 'Germany', 'United Kingdom', 'India', 'France', 'Brazil', 'Italy', 'Canada']
-    df = df[df['Country Name'].isin(top10country)]
-
-    # melt year columns  and convert year to date time
-    df_melt = df.melt(id_vars='Country Name', value_vars = value_variables)
-    df_melt.columns = ['country','year', 'variable']
-    df_melt['year'] = df_melt['year'].astype('datetime64[ns]').dt.year
-
-    # output clean csv file
-    return df_melt
+    
 
 def return_figures():
-    """Creates four plotly visualizations
+    """Creates XXXX plotly visualizations
 
     Args:
         None
 
     Returns:
-        list (dict): list containing the four plotly visualizations
+        list (dict): list containing the XXXX plotly visualizations
 
     """
 
-  # first chart plots arable land from 1990 to 2015 in top 10 economies 
-  # as a line chart
+  # first chart plots XXXX
+ 
     
     graph_one = []
-    df = cleandata('data/API_AG.LND.ARBL.HA.PC_DS2_en_csv_v2.csv')
-    df.columns = ['country','year','hectaresarablelandperperson']
-    df.sort_values('hectaresarablelandperperson', ascending=False, inplace=True)
-    countrylist = df.country.unique().tolist()
+    # Set up End and Start times for data grab
+    end = datetime(2009,12,31)
+    start = datetime(2008,9,1)
+
+    # JPMorgan Chase & Co.
+    JPM_08 = data.DataReader("JPM", 'yahoo', start, end)
+    # iShares Latin America 40 ETF
+    ILF_08 = data.DataReader("ILF", 'yahoo', start, end)
+    # Deutsche Bank Aktiengesellschaft
+    DB_08 = data.DataReader("DB", 'yahoo', start, end)
+    # National Australia Bank Limited
+    NABAX_08 = data.DataReader("NAB.AX", 'yahoo', start, end)
+    # Bank of China Limited 
+    BCL_08 = data.DataReader("3988.HK", 'yahoo', start, end)
+    # Barclays Africa Group Limited
+    AGRPY_08 = data.DataReader("AGRPY", 'yahoo', start, end)
     
-    for country in countrylist:
-      x_val = df[df['country'] == country].year.tolist()
-      y_val =  df[df['country'] == country].hectaresarablelandperperson.tolist()
-      graph_one.append(
-          go.Scatter(
-          x = x_val,
-          y = y_val,
-          mode = 'lines',
-          name = country
-          )
-      )
+    
+    
+    trace0 = go.Scatter(x=JPM_08.index, y=JPM_08['Adj Close'], name='JPM')
+    trace1 = go.Scatter(x = ILF_08.index,y = ILF_08['Adj Close'], name='ILF')
+    trace2 = go.Scatter(x = DB_08.index,y = DB_08['Adj Close'], name='DB')
+    trace3 = go.Scatter(x = NABAX_08.index,y = NABAX_08['Adj Close'], name='NABAX')
+    trace4 = go.Scatter(x = BCL_08.index,y = BCL_08['Adj Close'], name='BCL')
+    trace5 = go.Scatter(x = AGRPY_08.index,y = AGRPY_08['Adj Close'], name='AGRPY')
 
-    layout_one = dict(title = 'Change in Hectares Arable Land <br> per Person 1990 to 2015',
-                xaxis = dict(title = 'Year',
-                  autotick=False, tick0=1990, dtick=25),
-                yaxis = dict(title = 'Hectares'),
-                )
+    graph_one = [trace0, trace1,trace2, trace3, trace4, trace5]
+    
+    
+    layout_one = dict(title = 'Adjusted Closing Price 2008 <br> The Great Recession',
+                font=dict(size=10),
+                yaxis = dict(title = 'Adjusted Closing Price'))
 
-# second chart plots ararble land for 2015 as a bar chart    
+
     graph_two = []
-    df = cleandata('data/API_AG.LND.ARBL.HA.PC_DS2_en_csv_v2.csv')
-    df.columns = ['country','year','hectaresarablelandperperson']
-    df.sort_values('hectaresarablelandperperson', ascending=False, inplace=True)
-    df = df[df['year'] == 2015] 
 
-    graph_two.append(
-      go.Bar(
-      x = df.country.tolist(),
-      y = df.hectaresarablelandperperson.tolist(),
-      )
-    )
+    # Set up End and Start times for data grab
+    end = datetime.now()
+    start = datetime(2019,1,1)
 
-    layout_two = dict(title = 'Hectares Arable Land per Person in 2015',
-                xaxis = dict(title = 'Country',),
-                yaxis = dict(title = 'Hectares per person'),
-                )
+    # JPMorgan Chase & Co.
+    JPM_20 = data.DataReader("JPM", 'yahoo', start, end)
+    # iShares Latin America 40 ETF
+    ILF_20 = data.DataReader("ILF", 'yahoo', start, end)
+    # Deutsche Bank Aktiengesellschaft
+    DB_20 = data.DataReader("DB", 'yahoo', start, end)
+    # National Australia Bank Limited
+    NABAX_20 = data.DataReader("NAB.AX", 'yahoo', start, end)
+    # Bank of China Limited 
+    BCL_20 = data.DataReader("3988.HK", 'yahoo', start, end)
+    # Barclays Africa Group Limited
+    AGRPY_20 = data.DataReader("AGRPY", 'yahoo', start, end)
+    
+    
+    trace0 = go.Scatter(x=JPM_20.index, y=JPM_20['Adj Close'], name='JPM')
+    trace1 = go.Scatter(x = ILF_20.index,y = ILF_20['Adj Close'], name='ILF')
+    trace2 = go.Scatter(x = DB_20.index,y = DB_20['Adj Close'], name='DB')
+    trace3 = go.Scatter(x = NABAX_20.index,y = NABAX_20['Adj Close'], name='NABAX')
+    trace4 = go.Scatter(x = BCL_20.index,y = BCL_20['Adj Close'], name='BCL')
+    trace5 = go.Scatter(x = AGRPY_20.index,y = AGRPY_20['Adj Close'], name='AGRPY')
+    
 
+    graph_two = [trace0, trace1,trace2, trace3, trace4, trace5]
+    
+    
+    layout_two = dict(title = 'Adjusted Closing Price 2020 <br> Covid-19',
+                font=dict(size=10),
+                yaxis = dict(title = 'Adjusted Closing Price'))
+    
 
-# third chart plots percent of population that is rural from 1990 to 2015
+    
     graph_three = []
-    df = cleandata('data/API_SP.RUR.TOTL.ZS_DS2_en_csv_v2_9948275.csv')
-    df.columns = ['country', 'year', 'percentrural']
-    df.sort_values('percentrural', ascending=False, inplace=True)
-    for country in countrylist:
-      x_val = df[df['country'] == country].year.tolist()
-      y_val =  df[df['country'] == country].percentrural.tolist()
-      graph_three.append(
-          go.Scatter(
-          x = x_val,
-          y = y_val,
-          mode = 'lines',
-          name = country
-          )
-      )
-
-    layout_three = dict(title = 'Change in Rural Population <br> (Percent of Total Population)',
-                xaxis = dict(title = 'Year',
-                  autotick=False, tick0=1990, dtick=25),
-                yaxis = dict(title = 'Percent'),
-                )
+    # Set up End and Start times for data grab
+    end = datetime(2020,5,31)
+    start = datetime(2008,9,1)
     
-# fourth chart shows rural population vs arable land
+    JPM = data.DataReader("JPM", 'yahoo', start, end)
+    DB = data.DataReader("DB", 'yahoo', start, end)
+    # Historical view of the closing price
+    #df = JPM['Close']#.loc['2020-01-01':'2020-05-31']
+    
+  
+    trace0 = go.Scatter(x=JPM.index, y=JPM['Adj Close'], name='JPM')
+    trace1 = go.Scatter(x = DB.index,y = DB['Adj Close'], name='DB')
+    graph_three = [trace0, trace1]
+                                                
+    layout_three = dict(title = 'JPMorgan and Deutsche Bank Historical View <br> of the Adjusted Closing Price',
+                font=dict(size=10),
+                yaxis = dict(title = 'Adjusted Closing Price'))
+    
+    
     graph_four = []
+    end = datetime.now()
+    start = datetime(end.year - 1,end.month,end.day)
+    # JPMorgan candlestick
+    JPM = data.DataReader("JPM", 'yahoo', start, end)
+    df = JPM[['Open', 'High', 'Low', 'Close']].loc['2019-01-01':'2020-05-31']
+    df['Date']= df.index
+
+    trace0 = go.Candlestick(x=df.index,open=df['Open'],high=df['High'],low=df['Low'],close=df['Close'],name = 'JPM')
     
-    valuevariables = [str(x) for x in range(1995, 2016)]
-    keepcolumns = [str(x) for x in range(1995, 2016)]
-    keepcolumns.insert(0, 'Country Name')
-
-    df_one = cleandata('data/API_SP.RUR.TOTL_DS2_en_csv_v2_9914824.csv', keepcolumns, valuevariables)
-    df_two = cleandata('data/API_AG.LND.FRST.K2_DS2_en_csv_v2_9910393.csv', keepcolumns, valuevariables)
     
-    df_one.columns = ['country', 'year', 'variable']
-    df_two.columns = ['country', 'year', 'variable']
+    graph_four= [trace0]
+
+    layout_four = dict(title= 'JPM and the Covid-19 Impact',              
+                yaxis = dict(title= 'JPM Stock'))
     
-    df = df_one.merge(df_two, on=['country', 'year'])
-
-    for country in countrylist:
-      x_val = df[df['country'] == country].variable_x.tolist()
-      y_val = df[df['country'] == country].variable_y.tolist()
-      year = df[df['country'] == country].year.tolist()
-      country_label = df[df['country'] == country].country.tolist()
-
-      text = []
-      for country, year in zip(country_label, year):
-          text.append(str(country) + ' ' + str(year))
-
-      graph_four.append(
-          go.Scatter(
-          x = x_val,
-          y = y_val,
-          mode = 'markers',
-          text = text,
-          name = country,
-          textposition = 'top left'
-          )
-      )
-
-    layout_four = dict(title = 'Rural Population versus <br> Forested Area (Square Km) 1990-2015',
-                xaxis = dict(title = 'Rural Population'),
-                yaxis = dict(title = 'Forest Area (square km)'),
-                )
     
+    """
+    graph_five = []
+    end = datetime.now()
+    start = datetime(end.year - 1,end.month,end.day)
+    # JPMorgan candlestick
+    JPM = data.DataReader("JPM", 'yahoo', start, end)
+    df = JPM[['Open', 'High', 'Low', 'Close']]
+    df['Date']= df.index
+    #df.columns = ['0pen', 'High', 'Low','Close']
+    SMA5  = df['Close'].rolling(5).mean()
+    SMA10 = df['Close'].rolling(10).mean()
+    SMA20 = df['Close'].rolling(20).mean()
+    SMA60 = df['Close'].rolling(60).mean()
+
+    
+
+    trace1 = go.Scatter(x = SMA5.index,y = SMA5.values,name = '5MA')
+    trace2= go.Scatter(x = SMA10.index,y = SMA10.values,name = '10MA')
+    trace3 = go.Scatter(x = SMA20.index,y = SMA20.values,name = '20MA')
+    trace4 = go.Scatter(x = SMA60.index,y = SMA60.values,name = '60MA')
+
+    graph_five = [trace1, trace2, trace3, trace4]
+    layout_five = dict(title= 'JPM and the Great Recession 2020',              
+                yaxis = dict(title= 'JPM Stock'))
+    """
+
     # append all charts to the figures list
     figures = []
     figures.append(dict(data=graph_one, layout=layout_one))
     figures.append(dict(data=graph_two, layout=layout_two))
     figures.append(dict(data=graph_three, layout=layout_three))
     figures.append(dict(data=graph_four, layout=layout_four))
+    #figures.append(dict(data=graph_five, layout=layout_five))
+    
+    
+    #figures.append(dict(data=graph_five, layout=layout_five))
 
     return figures

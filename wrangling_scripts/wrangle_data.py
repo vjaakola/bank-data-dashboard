@@ -17,7 +17,7 @@ from datetime import datetime
     
 
 def return_figures():
-    """Creates XXXX plotly visualizations
+    """Creates four plotly visualizations
 
     Args:
         None
@@ -104,7 +104,7 @@ def return_figures():
     
     graph_three = []
     # Set up End and Start times for data grab
-    end = datetime(2020,5,31)
+    end = datetime.now() 
     start = datetime(2008,9,1)
     
     JPM = data.DataReader("JPM", 'yahoo', start, end)
@@ -127,7 +127,7 @@ def return_figures():
     start = datetime(end.year - 1,end.month,end.day)
     # JPMorgan candlestick
     JPM = data.DataReader("JPM", 'yahoo', start, end)
-    df = JPM[['Open', 'High', 'Low', 'Close']].loc['2019-01-01':'2020-05-31']
+    df = JPM[['Open', 'High', 'Low', 'Close']]
     df['Date']= df.index
 
     trace0 = go.Candlestick(x=df.index,open=df['Open'],high=df['High'],low=df['Low'],close=df['Close'],name = 'JPM')
@@ -135,8 +135,9 @@ def return_figures():
     
     graph_four= [trace0]
 
-    layout_four = dict(title= 'JPM and the Covid-19 Impact',              
-                yaxis = dict(title= 'JPM Stock'))
+    layout_four = dict(title= 'JPM and the Covid-19 Impact', 
+                font=dict(size=10),
+                yaxis = dict(title= 'Adjusted Closing Price'))
     
     
     """

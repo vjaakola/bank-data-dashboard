@@ -13,43 +13,28 @@
     </head>
     
     <body>
-    
-    
-    
-    <!--middle section-->     
-    
-    
-    <div class="row">
-    
-        <!--social media buttons column-->      
-        <div class="col-1 border-right">
-            <div id="follow-me" class="mt-3">
-                <a href="https://linkedin.com/in/vesa-jaakola">
-                    <img src="/static/img/linkedinlogo.png" alt="linkedin" class="img-fluid mb-4 ml-2">
-                </a>
-                <a href="https://github.com/VesaJ">
-                    <img src="/static/img/githublogo.png" alt="github" class="img-fluid ml-2">
-                </a>
-            </div>
-        </div>
-    
-        <!--visualizations column-->        
-        <div class="col-11">
+         
+        <div class="row">   
+        <div class="col-12">
     
             <!--chart descriptions-->       
-            <div id="middle-info" class="mt-3">
+            <div id="info" class="mt-1 p-5">
                
     
                 <h2 id="tag-line">Bank Data Dashboard</h2>
-                <h4 id="tag-line" class="text-muted">Various Banks from Five Continent</h4>
+                <h4 id="tag-line" class="text-muted">Various Banks from Six Continent</h4>
                 <p class="lead">JPMorgan(JPM),iShares Latin America(ILF),Deutsche Bank(DB)<br>National Australia Bank(NABAX),Bank of China Limited (BCL), Barclays Africa Group Limited(AGRPY)  </p> 
             </div>
-            
+            <div class="row">   
+                  
+       
+            <div class="col-12"></div>
+
             <!--charts-->       
             <div id="charts" class="container mt-3 text-center">
                         
                 <!--top two charts-->       
-                <div class="row">
+                <div class="row 1">
                     <div class="col-6">
                         <div id="{{ids[0]}}"></div>
                     </div>
@@ -59,7 +44,7 @@
                 </div>
     
                 <!--bottom two charts-->        
-                <div class="row 1"> 
+                <div class="row 2"> 
                     <div class="col-6"> 
                        <!-- <div id="chart3"> -->
                             <div id="{{ids[2]}}"></div>
@@ -76,7 +61,19 @@
             </div>
         <div>
     </div>
-    
+     <!--social media buttons column-->      
+        <!--<div class="col-1 border-right"> -->
+                <div class="row 3"> 
+                        <div id="follow-me" class="mt-3 p-5 ">
+                            <a href="https://linkedin.com/in/vesa-jaakola">
+                                <img src="/static/img/linkedinlogo1.png" alt="img-responsive" class="img-fluid ml-2" size="10%">
+                            </a>
+                            <a href="https://github.com/VesaJ">
+                                <img src="/static/img/githublogo1.png" alt="img-responsive " class="img-fluid ml-2">
+                            </a>
+                        </div>
+                    </div>
+        <!--visualizations column-->     
     <!--footer section-->               
     <div id="footer" class="container"></div>
     

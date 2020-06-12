@@ -6,9 +6,12 @@ and put them into one dashboard using Python list [ ] -method append().
 Codes for these graphs are in the GitHub link under the graphs and the text below. Happy data analysis!
 
 If you are interested to understand the whole configuration, check these links from my GitHub repo: 
-bank-data-dashboard/wrangling_scripts/wrangle_data.py
-bank-data-dashboard/bankapp/templates/index.html
-bank-data-dashboard/bankapp/routes.py
+
+> bank-data-dashboard/wrangling_scripts/wrangle_data.py
+
+> bank-data-dashboard/bankapp/templates/index.html
+
+> bank-data-dashboard/bankapp/routes.py
 
 
 

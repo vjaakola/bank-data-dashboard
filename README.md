@@ -39,6 +39,6 @@ This project was raised as a curiosity on how to make interactive graphs with Fl
 Must give credit to: 
 - Udacity 
 - Jose Portilla, Head of Data Science, Pierian Data Inc., for teaching methods
-- Robert Siipola, Co-founder at Three Point Consulting, for for overall mentoring in data science
+- Robert Siipola, Co-founder at Three Point Consulting, for overall mentoring in data science
 
 

@@ -7,9 +7,9 @@ Codes for these graphs are in the GitHub link under the graphs and the text belo
 
 If you are interested to understand the whole configuration, check these links from my GitHub repo: 
 
-- bank-data-dashboard/wrangling_scripts/wrangle_data.py
-- bank-data-dashboard/bankapp/templates/index.html
-- bank-data-dashboard/bankapp/routes.py
+- [wrangle_data.py](https://github.com/VesaJ/bank-data-dashboard/blob/master/wrangling_scripts/wrangle_data.py)
+- [index.html](https://github.com/VesaJ/bank-data-dashboard/blob/master/bankapp/templates/index.html)
+- [routes.py](https://github.com/VesaJ/bank-data-dashboard/blob/master/bankapp/routes.py)
 
 Here is a link to Herokuapp, where you can see the demo:
 [Bank Data Dashboard](https://bank-data-demo.herokuapp.com)

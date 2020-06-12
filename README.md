@@ -19,12 +19,12 @@ Read the Procfile, where you can check the requirements.
 
 ### How to run this project
 
-Fork files to local
-Make: python3 -m venv venv
-Activate: source venv/bin/activate
-Install: pip install flask pandas plotly gunicorn pandas_datareader
-cd web_app
-(venv)web_app: python bankapp.py 
+- Fork files to local
+- Make: python3 -m venv venv
+- Activate: source venv/bin/activate
+- Install: pip install flask pandas plotly gunicorn pandas_datareader
+- cd web_app
+- (venv)web_app: python bankapp.py 
 
 ### Author
 

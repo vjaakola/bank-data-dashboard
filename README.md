@@ -21,12 +21,12 @@ Read the Procfile, where you can check the requirements.
 Vesa Jaakola
 
 ### About
-This project was raised as a curiosity on how to make interactive graphs with Flask. Learning material was part of the Udacity Data Scientist nanodegree program.
+This project was raised as a curiosity on how to make interactive graphs with Flask. Learning materials were part of the Udacity Data Scientist nanodegree program and Udemy's Learning Python for Data Analysis and Visualization and Python for Data Science and Machine Learning Bootcamp.
 
 ### License
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ### Acknowledgements
-Must give credit to Udacity. 
+Must give credit to Udacity and Jose Portilla, Head of Data Science, Pierian Data Inc.
 
 

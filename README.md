@@ -17,6 +17,15 @@ Here is a link to Herokuapp, where you can see the demo:
 ### Instructions:
 Read the Procfile, where you can check the requirements.
 
+### How to run this project
+
+Fork files to local
+Make: python3 -m venv venv
+Activate: source venv/bin/activate
+Install: pip install flask pandas plotly gunicorn pandas_datareader
+cd web_app
+(venv)web_app: python bankapp.py 
+
 ### Author
 
 Vesa Jaakola

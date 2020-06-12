@@ -8,10 +8,8 @@ from datetime import datetime
 """Prepare Yahoo Finance bank data for a visualizaiton dashboard
 
     Args:
-        dataset: Pandas data reader to open the data files
+        dataset: Pandas data reader to open the data
 
-    Returns:
-        None
 
     """    
     
@@ -23,11 +21,11 @@ def return_figures():
         None
 
     Returns:
-        list (dict): list containing the XXXX plotly visualizations
+        list (dict): list containing the four plotly visualizations
 
     """
 
-  # first chart plots XXXX
+  # chart plots
  
     
     graph_one = []
@@ -109,8 +107,6 @@ def return_figures():
     
     JPM = data.DataReader("JPM", 'yahoo', start, end)
     DB = data.DataReader("DB", 'yahoo', start, end)
-    # Historical view of the closing price
-    #df = JPM['Close']#.loc['2020-01-01':'2020-05-31']
     
   
     trace0 = go.Scatter(x=JPM.index, y=JPM['Adj Close'], name='JPM')
@@ -125,6 +121,7 @@ def return_figures():
     graph_four = []
     end = datetime.now()
     start = datetime(end.year - 1,end.month,end.day)
+    
     # JPMorgan candlestick
     JPM = data.DataReader("JPM", 'yahoo', start, end)
     df = JPM[['Open', 'High', 'Low', 'Close']]
@@ -139,32 +136,12 @@ def return_figures():
                 font=dict(size=10),
                 yaxis = dict(title= 'Adjusted Closing Price'))
     
-    
-    """
-    graph_five = []
-    end = datetime.now()
-    start = datetime(end.year - 1,end.month,end.day)
-    # JPMorgan candlestick
-    JPM = data.DataReader("JPM", 'yahoo', start, end)
-    df = JPM[['Open', 'High', 'Low', 'Close']]
-    df['Date']= df.index
-    #df.columns = ['0pen', 'High', 'Low','Close']
-    SMA5  = df['Close'].rolling(5).mean()
-    SMA10 = df['Close'].rolling(10).mean()
-    SMA20 = df['Close'].rolling(20).mean()
-    SMA60 = df['Close'].rolling(60).mean()
-
-    
-
-    trace1 = go.Scatter(x = SMA5.index,y = SMA5.values,name = '5MA')
-    trace2= go.Scatter(x = SMA10.index,y = SMA10.values,name = '10MA')
-    trace3 = go.Scatter(x = SMA20.index,y = SMA20.values,name = '20MA')
-    trace4 = go.Scatter(x = SMA60.index,y = SMA60.values,name = '60MA')
+   
 
     graph_five = [trace1, trace2, trace3, trace4]
     layout_five = dict(title= 'JPM and the Great Recession 2020',              
                 yaxis = dict(title= 'JPM Stock'))
-    """
+  
 
     # append all charts to the figures list
     figures = []
@@ -172,9 +149,7 @@ def return_figures():
     figures.append(dict(data=graph_two, layout=layout_two))
     figures.append(dict(data=graph_three, layout=layout_three))
     figures.append(dict(data=graph_four, layout=layout_four))
-    #figures.append(dict(data=graph_five, layout=layout_five))
-    
-    
-    #figures.append(dict(data=graph_five, layout=layout_five))
+   
+ 
 
     return figures

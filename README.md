@@ -37,8 +37,8 @@ This project was raised as a curiosity on how to make interactive graphs with Fl
 
 ### Acknowledgements
 Must give credit to: 
-- Udacity 
-- Jose Portilla, Head of Data Science, Pierian Data Inc., for teaching methods
+- Udacity for providing awesome learning materials
+- Jose Portilla, Head of Data Science, Pierian Data Inc., for teaching data analyzing methods at Udemy
 - Robert Siipola, Co-founder at Three Point Consulting, for overall mentoring in data science
 
 
